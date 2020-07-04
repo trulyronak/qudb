@@ -1,4 +1,85 @@
-# qudb
+qudb
+====
+
+quickly start and manage databases
+
+[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
+[![Version](https://img.shields.io/npm/v/qudb.svg)](https://npmjs.org/package/qudb)
+[![Downloads/week](https://img.shields.io/npm/dw/qudb.svg)](https://npmjs.org/package/qudb)
+[![License](https://img.shields.io/npm/l/qudb.svg)](https://github.com/trulyronak/qudb/blob/master/package.json)
+
+<!-- toc -->
+* [Usage](#usage)
+* [Commands](#commands)
+<!-- tocstop -->
+# Usage
+<!-- usage -->
+```sh-session
+$ npm install -g qudb
+$ qdb COMMAND
+running command...
+$ qdb (-v|--version|version)
+qudb/0.0.0 darwin-x64 node-v14.2.0
+$ qdb --help [COMMAND]
+USAGE
+  $ qdb COMMAND
+...
+```
+<!-- usagestop -->
+# Commands
+<!-- commands -->
+* [`qdb hello [FILE]`](#qdb-hello-file)
+* [`qdb help [COMMAND]`](#qdb-help-command)
+
+## `qdb hello [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ qdb hello [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+
+EXAMPLE
+  $ qdb hello
+  hello world from ./src/hello.ts!
+```
+
+_See code: [src/commands/hello.ts](https://github.com/trulyronak/qudb/blob/v0.0.0/src/commands/hello.ts)_
+
+## `qdb help [COMMAND]`
+
+display help for qdb
+
+```
+USAGE
+  $ qdb help [COMMAND]
+
+ARGUMENTS
+  COMMAND  command to show help for
+
+OPTIONS
+  --all  see all commands in CLI
+```
+
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.1.0/src/commands/help.ts)_
+<!-- commandsstop -->
+
+qudb (qdb)
+====
+
+quickly start and manage databases
+
+[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
+[![Version](https://img.shields.io/npm/v/qudb.svg)](https://npmjs.org/package/qudb)
+[![Downloads/week](https://img.shields.io/npm/dw/qudb.svg)](https://npmjs.org/package/qudb)
+[![License](https://img.shields.io/npm/l/qudb.svg)](https://github.com/trulyronak/qudb/blob/master/package.json)
+
+
 
 `qdb` if the command exists, otherwise it'll be `quickdb` or something
 
