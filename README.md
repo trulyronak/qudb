@@ -23,7 +23,6 @@ quickly start and manage databases
 * [nuke a database (no data saved, db stopped)](#nuke-a-database-no-data-saved-db-stopped)
 * [start a database with credentials](#start-a-database-with-credentials)
 * [start a database but pass in environment variables](#start-a-database-but-pass-in-environment-variables)
-
 <!-- tocstop -->
 # Usage
 <!-- usage -->
@@ -32,7 +31,7 @@ $ npm install -g qudb
 $ qdb COMMAND
 running command...
 $ qdb (-v|--version|version)
-qudb/0.0.0 darwin-x64 node-v14.2.0
+qudb/0.1.0 darwin-x64 node-v14.2.0
 $ qdb --help [COMMAND]
 USAGE
   $ qdb COMMAND
@@ -41,6 +40,7 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`qdb hello [FILE]`](#qdb-hello-file)
 * [`qdb help [COMMAND]`](#qdb-help-command)
 * [`qdb start DATABASE`](#qdb-start-database)
 * [`qdb stop NAME`](#qdb-stop-name)
@@ -63,7 +63,7 @@ EXAMPLE
   hello world from ./src/hello.ts!
 ```
 
-_See code: [src/commands/hello.ts](https://github.com/trulyronak/qudb/blob/v0.0.0/src/commands/hello.ts)_
+_See code: [src/commands/hello.ts](https://github.com/trulyronak/qudb/blob/v0.1.0/src/commands/hello.ts)_
 
 ## `qdb help [COMMAND]`
 
@@ -107,7 +107,7 @@ OPTIONS
 
   -u, --username=username  [default: root] root username for db - defaults to root
 
-  --name=name              [default: agqUEaKANo] the name to give this database - autogenerates one for you otherwise
+  --name=name              [default: UswbK0gQA8] the name to give this database - autogenerates one for you otherwise
 
   --network=network        docker network to connect db to
 
@@ -117,7 +117,7 @@ EXAMPLE
   $ qdb start postgres
 ```
 
-_See code: [src/commands/start/index.ts](https://github.com/trulyronak/qudb/blob/v0.0.0/src/commands/start/index.ts)_
+_See code: [src/commands/start/index.ts](https://github.com/trulyronak/qudb/blob/v0.1.0/src/commands/start/index.ts)_
 
 ## `qdb stop NAME`
 
@@ -137,7 +137,7 @@ EXAMPLE
   $ qdb stop fluffy-flamingo
 ```
 
-_See code: [src/commands/stop/index.ts](https://github.com/trulyronak/qudb/blob/v0.0.0/src/commands/stop/index.ts)_
+_See code: [src/commands/stop/index.ts](https://github.com/trulyronak/qudb/blob/v0.1.0/src/commands/stop/index.ts)_
 <!-- commandsstop -->
 
 qudb (qdb)
