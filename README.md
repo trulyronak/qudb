@@ -11,6 +11,19 @@ quickly start and manage databases
 <!-- toc -->
 * [Usage](#usage)
 * [Commands](#commands)
+* [start up a postgres database](#start-up-a-postgres-database)
+* [start up a postgres database and see whats happening](#start-up-a-postgres-database-and-see-whats-happening)
+* [see running databases](#see-running-databases)
+* [start a database on a specific port](#start-a-database-on-a-specific-port)
+* [start a database on a specific network](#start-a-database-on-a-specific-network)
+* [start a database but preserve data](#start-a-database-but-preserve-data)
+* [start a database with a specific name](#start-a-database-with-a-specific-name)
+* [kill a database (terminates process, does not mess with data)](#kill-a-database-terminates-process-does-not-mess-with-data)
+* [delete data for a database (fails if db is still running)](#delete-data-for-a-database-fails-if-db-is-still-running)
+* [nuke a database (no data saved, db stopped)](#nuke-a-database-no-data-saved-db-stopped)
+* [start a database with credentials](#start-a-database-with-credentials)
+* [start a database but pass in environment variables](#start-a-database-but-pass-in-environment-variables)
+
 <!-- tocstop -->
 # Usage
 <!-- usage -->
@@ -28,8 +41,9 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`qdb hello [FILE]`](#qdb-hello-file)
 * [`qdb help [COMMAND]`](#qdb-help-command)
+* [`qdb start DATABASE`](#qdb-start-database)
+* [`qdb stop NAME`](#qdb-stop-name)
 
 ## `qdb hello [FILE]`
 
@@ -67,6 +81,63 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.1.0/src/commands/help.ts)_
+
+## `qdb start DATABASE`
+
+starts up a database
+
+```
+USAGE
+  $ qdb start DATABASE
+
+ARGUMENTS
+  DATABASE  type of database to start (postgres | mysql | etc)
+
+OPTIONS
+  -e, --env=env            environment variables to pass into the db
+  -h, --help               show CLI help
+  -p, --password=password  [default: password] root password for db - defaults to password
+
+  -p, --port=port          port to expose the database on (identifies where the db is listening and maps it to the
+                           desired local port
+
+  -s, --save               save data
+
+  -t, --tail               follow output as it happens
+
+  -u, --username=username  [default: root] root username for db - defaults to root
+
+  --name=name              [default: agqUEaKANo] the name to give this database - autogenerates one for you otherwise
+
+  --network=network        docker network to connect db to
+
+  --store                  location where to save data - defaults to ~/.qudb
+
+EXAMPLE
+  $ qdb start postgres
+```
+
+_See code: [src/commands/start/index.ts](https://github.com/trulyronak/qudb/blob/v0.0.0/src/commands/start/index.ts)_
+
+## `qdb stop NAME`
+
+starts up a database
+
+```
+USAGE
+  $ qdb stop NAME
+
+ARGUMENTS
+  NAME  name of database to stop
+
+OPTIONS
+  -h, --help  show CLI help
+
+EXAMPLE
+  $ qdb stop fluffy-flamingo
+```
+
+_See code: [src/commands/stop/index.ts](https://github.com/trulyronak/qudb/blob/v0.0.0/src/commands/stop/index.ts)_
 <!-- commandsstop -->
 
 qudb (qdb)
