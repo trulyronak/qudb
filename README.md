@@ -31,7 +31,7 @@ $ npm install -g qudb
 $ qdb COMMAND
 running command...
 $ qdb (-v|--version|version)
-qudb/0.1.0 darwin-x64 node-v14.2.0
+qudb/0.2.0 darwin-x64 node-v14.2.0
 $ qdb --help [COMMAND]
 USAGE
   $ qdb COMMAND
@@ -42,8 +42,9 @@ USAGE
 <!-- commands -->
 * [`qdb hello [FILE]`](#qdb-hello-file)
 * [`qdb help [COMMAND]`](#qdb-help-command)
-* [`qdb start DATABASE`](#qdb-start-database)
-* [`qdb stop NAME`](#qdb-stop-name)
+* [`qdb init DATABASE [STORE]`](#qdb-init-database-store)
+* [`qdb start [DATABASE]`](#qdb-start-database)
+* [`qdb stop [NAME] [STORE]`](#qdb-stop-name-store)
 
 ## `qdb hello [FILE]`
 
@@ -63,7 +64,7 @@ EXAMPLE
   hello world from ./src/hello.ts!
 ```
 
-_See code: [src/commands/hello.ts](https://github.com/trulyronak/qudb/blob/v0.1.0/src/commands/hello.ts)_
+_See code: [src/commands/hello.ts](https://github.com/trulyronak/qudb/blob/v0.2.0/src/commands/hello.ts)_
 
 ## `qdb help [COMMAND]`
 
@@ -82,19 +83,55 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.1.0/src/commands/help.ts)_
 
-## `qdb start DATABASE`
+## `qdb init DATABASE [STORE]`
+
+creates a database configuration file
+
+```
+USAGE
+  $ qdb init DATABASE [STORE]
+
+ARGUMENTS
+  DATABASE  type of database to start (postgres | mysql | etc)
+  STORE     [default: .] location where to save data - defaults to current directory
+
+OPTIONS
+  -e, --env=env            environment variables to pass into the db
+  -f, --force              override any existing configuration file
+  -h, --help               show CLI help
+  -p, --password=password  [default: password] root password for db - defaults to password
+
+  -p, --port=port          port to expose the database on (identifies where the db is listening and maps it to the
+                           desired local port
+
+  -t, --tail               follow output as it happens
+
+  -u, --username=username  [default: root] root username for db - defaults to root
+
+  --name=name              [default: K60cs97E26] the name to give this database - autogenerates one for you otherwise
+
+  --network=network        docker network to connect db to
+
+EXAMPLE
+  $ qdb save postgres <optional_path_to_directory_to_save_config>
+```
+
+_See code: [src/commands/init/index.ts](https://github.com/trulyronak/qudb/blob/v0.2.0/src/commands/init/index.ts)_
+
+## `qdb start [DATABASE]`
 
 starts up a database
 
 ```
 USAGE
-  $ qdb start DATABASE
+  $ qdb start [DATABASE]
 
 ARGUMENTS
   DATABASE  type of database to start (postgres | mysql | etc)
 
 OPTIONS
   -e, --env=env            environment variables to pass into the db
+  -f, --force              override any existing configuration file
   -h, --help               show CLI help
   -p, --password=password  [default: password] root password for db - defaults to password
 
@@ -107,28 +144,31 @@ OPTIONS
 
   -u, --username=username  [default: root] root username for db - defaults to root
 
-  --name=name              [default: jMDAzPWnVM] the name to give this database - autogenerates one for you otherwise
+  --load=load              [default: .] directory where your qudb.yaml file is located
+
+  --name=name              [default: yf9v4bHXqe] the name to give this database - autogenerates one for you otherwise
 
   --network=network        docker network to connect db to
 
-  --store                  location where to save data - defaults to ~/.qudb
+  --store=store            location where to save data - defaults to current directory
 
 EXAMPLE
   $ qdb start postgres
 ```
 
-_See code: [src/commands/start/index.ts](https://github.com/trulyronak/qudb/blob/v0.1.0/src/commands/start/index.ts)_
+_See code: [src/commands/start/index.ts](https://github.com/trulyronak/qudb/blob/v0.2.0/src/commands/start/index.ts)_
 
-## `qdb stop NAME`
+## `qdb stop [NAME] [STORE]`
 
 starts up a database
 
 ```
 USAGE
-  $ qdb stop NAME
+  $ qdb stop [NAME] [STORE]
 
 ARGUMENTS
-  NAME  name of database to stop
+  NAME   name of database to stop
+  STORE  [default: .] location where to save data - defaults to current directory
 
 OPTIONS
   -h, --help  show CLI help
@@ -137,7 +177,7 @@ EXAMPLE
   $ qdb stop fluffy-flamingo
 ```
 
-_See code: [src/commands/stop/index.ts](https://github.com/trulyronak/qudb/blob/v0.1.0/src/commands/stop/index.ts)_
+_See code: [src/commands/stop/index.ts](https://github.com/trulyronak/qudb/blob/v0.2.0/src/commands/stop/index.ts)_
 <!-- commandsstop -->
 
 qudb (qdb)
