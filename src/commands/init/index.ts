@@ -3,10 +3,10 @@ import {generateString} from "../../utils"
 import {Database} from "../../core/database"
 
 export default class Start extends Command {
-	static description = "starts up a database"
+	static description = "creates a database configuration file"
 
 	static examples = [
-		"$ qdb start postgres",
+		"$ qdb save postgres <optional_path_to_directory_to_save_config>",
 	]
 
 	static flags = {
@@ -21,15 +21,6 @@ export default class Start extends Command {
 		}),
 		network: flags.string({
 			description: "docker network to connect db to",
-		}),
-		save: flags.boolean({
-			char: "s",
-			description: "save data",
-			default: false,
-		}),
-		store: flags.string({
-			description: "location where to save data - defaults to current directory",
-			dependsOn: ["save"],
 		}),
 		name: flags.string({
 			description: "the name to give this database - autogenerates one for you otherwise",
@@ -51,10 +42,6 @@ export default class Start extends Command {
 			default: "password",
 			dependsOn: ["username"],
 		}),
-		load: flags.string({
-			description: "directory where your qudb.yaml file is located",
-			default: ".",
-		}),
 		force: flags.boolean({
 			char: "f",
 			description: "override any existing configuration file",
@@ -64,31 +51,26 @@ export default class Start extends Command {
 
 	static args = [{
 		name: "database",
-		required: false,
+		required: true,
 		description: "type of database to start (postgres | mysql | etc)",
+	}, {
+		name: "store",
+		description: "location where to save data - defaults to current directory",
+		default: ".",
 	}]
 
 	async run() {
 		const {args, flags} = this.parse(Start)
 
-		let db: Database
-		if (args.database) { // use existing config
-			console.log(`creating database "${flags.name}"`)
-			db = new Database({
-				name: flags.name,
-				type: args.database,
-				username: flags.username,
-				password: flags.password,
-				save: flags.save,
-				store: flags.store,
-			}, flags.port)
-			if (flags.save) {
-				db.save(flags.force)
-			}
-		} else {
-			db = await Database.load(flags.load)
-			console.log(`loaded database "${db.config.name}"`)
-		}
-		await db.start()
+		console.log(`creating database "${flags.name}"`)
+		const db = new Database({
+			name: flags.name,
+			type: args.database,
+			username: flags.username,
+			password: flags.password,
+			save: true,
+			store: args.store,
+		}, flags.port)
+		await db.save(flags.force)
 	}
 }

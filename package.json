@@ -11,13 +11,18 @@
     "@oclif/command": "^1.7.0",
     "@oclif/config": "^1.16.0",
     "@oclif/plugin-help": "^3.1.0",
+    "@types/fs-extra": "^9.0.1",
     "execa": "^4.0.2",
+    "fs-extra": "^9.0.1",
+    "js-yaml": "^3.14.0",
+    "path": "^0.12.7",
     "tslib": "^1.13.0"
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1.22.2",
     "@oclif/test": "^1.2.6",
     "@types/chai": "^4.2.11",
+    "@types/js-yaml": "^3.12.5",
     "@types/mocha": "^5.2.7",
     "@types/node": "^10.17.26",
     "chai": "^4.2.0",

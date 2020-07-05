@@ -107,7 +107,7 @@ OPTIONS
 
   -u, --username=username  [default: root] root username for db - defaults to root
 
-  --name=name              [default: UswbK0gQA8] the name to give this database - autogenerates one for you otherwise
+  --name=name              [default: jMDAzPWnVM] the name to give this database - autogenerates one for you otherwise
 
   --network=network        docker network to connect db to
 

@@ -14,13 +14,21 @@ export default class Start extends Command {
 
 	static args = [{
 		name: "name",
-		required: true,
+		required: false,
 		description: "name of database to stop",
+	}, {
+		name: "store",
+		description: "location where to save data - defaults to current directory",
+		default: ".",
 	}]
 
 	async run() {
 		const {args} = this.parse(Start)
-
-		Database.stop(args.name)
+		if (args.name) {
+			await Database.stop(args.name)
+		} else {
+			const db = await Database.load(args.store)
+			await Database.stop(db.config.name)
+		}
 	}
 }
