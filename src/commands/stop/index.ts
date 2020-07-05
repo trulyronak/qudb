@@ -1,8 +1,8 @@
 import {Command, flags} from "@oclif/command"
 import {Database} from "../../core/database"
 
-export default class Start extends Command {
-	static description = "starts up a database"
+export default class Stop extends Command {
+	static description = "stops a database"
 
 	static examples = [
 		"$ qdb stop fluffy-flamingo",
@@ -18,12 +18,12 @@ export default class Start extends Command {
 		description: "name of database to stop",
 	}, {
 		name: "store",
-		description: "location where to save data - defaults to current directory",
+		description: "location where to load configuration file from",
 		default: ".",
 	}]
 
 	async run() {
-		const {args} = this.parse(Start)
+		const {args} = this.parse(Stop)
 		if (args.name) {
 			await Database.stop(args.name)
 		} else {

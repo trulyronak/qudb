@@ -53,7 +53,6 @@ export class Database {
 			return acc.concat(curr.toString(), option)
 		}, [option])
 		options.pop()
-
 		return options
 	}
 
@@ -102,6 +101,11 @@ export class Database {
 			const fileLoc = path.resolve(dir, "qudb.yaml")
 			const configuration = safeLoad(readFileSync(fileLoc, "utf8")) as DatabaseConfig
 
+			if (configuration.exposedPorts) { // shape exposed ports to fit class
+				configuration.exposedPorts = configuration.exposedPorts.map(ports => {
+					return new PortMapping(ports.hostPort, ports.containerPort)
+				})
+			}
 			return new Database(configuration)
 		} catch (error) {
 			console.log(`Could not load configuration file at ${dir}`)
@@ -110,9 +114,16 @@ export class Database {
 	}
 
 	static async stop(name: string) {
-		let {all} = await execa("docker", ["stop", name])
-		console.log(all || `stopped container ${name}`)
-		all = (await execa("docker", ["rm", name])).all
-		console.log(all || `removed container ${name}`)
+		let result = await execa("docker", ["stop", name])
+		console.log(result.stderr || `stopped container ${name}`)
+
+		result = await execa("docker", ["rm", name])
+		console.log(result.stderr || `removed container ${name}`)
+	}
+
+	static async status(name: string) {
+		const {stdout, stderr}  = await execa.command(`docker ps --filter name=${name}`)
+		console.log(stdout)
+		console.log(stderr || "")
 	}
 }
