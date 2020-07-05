@@ -108,7 +108,7 @@ OPTIONS
 
   -u, --username=username  [default: root] root username for db - defaults to root
 
-  --name=name              [default: K60cs97E26] the name to give this database - autogenerates one for you otherwise
+  --name=name              [default: CCHZvKfTDb] the name to give this database - autogenerates one for you otherwise
 
   --network=network        docker network to connect db to
 
@@ -146,7 +146,7 @@ OPTIONS
 
   --load=load              [default: .] directory where your qudb.yaml file is located
 
-  --name=name              [default: yf9v4bHXqe] the name to give this database - autogenerates one for you otherwise
+  --name=name              [default: ULziAmWO5E] the name to give this database - autogenerates one for you otherwise
 
   --network=network        docker network to connect db to
 
