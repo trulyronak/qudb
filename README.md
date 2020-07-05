@@ -31,7 +31,7 @@ $ npm install -g qudb
 $ qdb COMMAND
 running command...
 $ qdb (-v|--version|version)
-qudb/0.2.0 darwin-x64 node-v14.2.0
+qudb/0.3.0 darwin-x64 node-v14.2.0
 $ qdb --help [COMMAND]
 USAGE
   $ qdb COMMAND
@@ -64,7 +64,7 @@ EXAMPLE
   hello world from ./src/hello.ts!
 ```
 
-_See code: [src/commands/hello.ts](https://github.com/trulyronak/qudb/blob/v0.2.0/src/commands/hello.ts)_
+_See code: [src/commands/hello.ts](https://github.com/trulyronak/qudb/blob/v0.3.0/src/commands/hello.ts)_
 
 ## `qdb help [COMMAND]`
 
@@ -108,7 +108,7 @@ OPTIONS
 
   -u, --username=username  [default: root] root username for db - defaults to root
 
-  --name=name              [default: CCHZvKfTDb] the name to give this database - autogenerates one for you otherwise
+  --name=name              [default: VUcy3fHv0W] the name to give this database - autogenerates one for you otherwise
 
   --network=network        docker network to connect db to
 
@@ -116,7 +116,7 @@ EXAMPLE
   $ qdb save postgres <optional_path_to_directory_to_save_config>
 ```
 
-_See code: [src/commands/init/index.ts](https://github.com/trulyronak/qudb/blob/v0.2.0/src/commands/init/index.ts)_
+_See code: [src/commands/init/index.ts](https://github.com/trulyronak/qudb/blob/v0.3.0/src/commands/init/index.ts)_
 
 ## `qdb start [DATABASE]`
 
@@ -146,7 +146,7 @@ OPTIONS
 
   --load=load              [default: .] directory where your qudb.yaml file is located
 
-  --name=name              [default: ULziAmWO5E] the name to give this database - autogenerates one for you otherwise
+  --name=name              [default: hJaeHfckf2] the name to give this database - autogenerates one for you otherwise
 
   --network=network        docker network to connect db to
 
@@ -156,7 +156,7 @@ EXAMPLE
   $ qdb start postgres
 ```
 
-_See code: [src/commands/start/index.ts](https://github.com/trulyronak/qudb/blob/v0.2.0/src/commands/start/index.ts)_
+_See code: [src/commands/start/index.ts](https://github.com/trulyronak/qudb/blob/v0.3.0/src/commands/start/index.ts)_
 
 ## `qdb stop [NAME] [STORE]`
 
@@ -177,7 +177,7 @@ EXAMPLE
   $ qdb stop fluffy-flamingo
 ```
 
-_See code: [src/commands/stop/index.ts](https://github.com/trulyronak/qudb/blob/v0.2.0/src/commands/stop/index.ts)_
+_See code: [src/commands/stop/index.ts](https://github.com/trulyronak/qudb/blob/v0.3.0/src/commands/stop/index.ts)_
 <!-- commandsstop -->
 
 qudb (qdb)
