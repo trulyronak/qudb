@@ -1,7 +1,7 @@
 {
   "name": "qudb",
   "description": "quickly start and manage databases",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "author": "Ronak Shah @trulyronak",
   "bin": {
     "qdb": "./bin/run"
