@@ -1,7 +1,6 @@
 import {Command, flags} from "@oclif/command"
 import {generateString} from "../../utils"
 import {Database, DB_Types, presetFor} from "../../core/database"
-import { cli } from 'cli-ux'
 import inquirer = require('inquirer')
 
 export default class Init extends Command {

@@ -22,8 +22,8 @@ export default class Nuke extends Command {
 	async run() {
 		const {args} = this.parse(Nuke)
 
-        const db = await Database.load(args.config)
-        await Database.stop(db.config.name)
-        await db.nuke();
+		const db = await Database.load(args.config)
+		await Database.stop(db.config.name)
+		await db.nuke();
 	}
 }

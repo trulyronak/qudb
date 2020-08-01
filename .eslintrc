@@ -8,6 +8,6 @@
     "lines-between-class-members": "off",
     "no-console": "off",
     "max-params": "off",
-    "indent": ["error", "tab"],
+    "indent": ["error", "tab"]
   }
 }
