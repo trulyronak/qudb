@@ -2,7 +2,7 @@ import execa = require("execa")
 import * as path from "path"
 import {environmentVariable} from "../utils"
 import {safeLoad, safeDump} from "js-yaml"
-import {outputFileSync, readFileSync, existsSync, mkdirpSync} from "fs-extra"
+import {outputFileSync, readFileSync, existsSync, mkdirpSync, remove} from "fs-extra"
 import {cli} from "cli-ux"
 import { env } from 'process'
 import { string } from '@oclif/command/lib/flags'
@@ -120,8 +120,8 @@ export class Database {
 		return options
 	}
 
-	async start() {
-		const args: string[] = ["-d"]
+	async start(tail: boolean = false) {
+		const args: string[] = tail ? [] : ["-d"]
 		// create directory if it doesn't exist
 		const dataLoc = path.resolve(this.config.data)
 		mkdirpSync(dataLoc)
@@ -166,6 +166,14 @@ export class Database {
 		}
 	}
 
+	async nuke() {
+		try {
+			await remove(path.resolve(this.config.data))
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
 	static async load(dir: string) {
 		try {
 			const fileLoc = path.resolve(dir, "qudb.yaml")
@@ -196,4 +204,5 @@ export class Database {
 		console.log(stdout)
 		console.log(stderr || "")
 	}
+
 }

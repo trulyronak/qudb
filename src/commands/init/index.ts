@@ -4,7 +4,7 @@ import {Database, DB_Types, presetFor} from "../../core/database"
 import { cli } from 'cli-ux'
 import inquirer = require('inquirer')
 
-export default class Start extends Command {
+export default class Init extends Command {
 	static description = "creates a database configuration file"
 
 	static examples = [
@@ -66,7 +66,7 @@ export default class Start extends Command {
 	}]
 
 	async run() {
-		const {args, flags} = this.parse(Start)
+		const {args, flags} = this.parse(Init)
 		let type: DB_Types, port = flags.port, data = flags.data
 
 		if (args.database) {

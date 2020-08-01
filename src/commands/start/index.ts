@@ -14,6 +14,7 @@ export default class Start extends Command {
 		tail: flags.boolean({
 			char: "t",
 			description: "follow output as it happens",
+			default: false
 		}),
 		port: flags.integer({
 			char: "p",
@@ -94,6 +95,6 @@ export default class Start extends Command {
 			db = await Database.load(flags.load)
 			console.log(`loaded database "${db.config.name}"`)
 		}
-		await db.start()
+		await db.start(flags.tail)
 	}
 }
