@@ -1,6 +1,8 @@
 import {Command, flags} from "@oclif/command"
 import {generateString} from "../../utils"
-import {Database} from "../../core/database"
+import {Database, DB_Types, presetFor} from "../../core/database"
+import { cli } from 'cli-ux'
+import inquirer = require('inquirer')
 
 export default class Start extends Command {
 	static description = "creates a database configuration file"
@@ -17,7 +19,7 @@ export default class Start extends Command {
 		}),
 		port: flags.integer({
 			char: "p",
-			description: "port to expose the database on (identifies where the db is listening and maps it to the desired local port",
+			description: "port to expose the database on (identifies where the db is listening and maps it to the desired local port, defaults to db default",
 		}),
 		network: flags.string({
 			description: "docker network to connect db to",
@@ -31,13 +33,11 @@ export default class Start extends Command {
 			description: "environment variables to pass into the db",
 		}),
 		username: flags.string({
-			char: "u",
 			description: "root username for db - defaults to root",
 			default: "root",
 			dependsOn: ["password"],
 		}),
 		password: flags.string({
-			char: "p",
 			description: "root password for db - defaults to password",
 			default: "password",
 			dependsOn: ["username"],
@@ -47,12 +47,18 @@ export default class Start extends Command {
 			description: "override any existing configuration file",
 			default: false,
 		}),
+		data: flags.string({
+			char: "v",
+			description: "where to store the data in this database — defaults to ./.qudb/data",
+			default: "./.qudb/data"
+		})
 	}
 
 	static args = [{
 		name: "database",
-		required: true,
-		description: "type of database to start (postgres | mysql | etc)",
+		required: false,
+		description: "type of database to start. If you'd like more, support can be added easily (file an issue!)",
+		options: ["postgres", "mysql", "redis"]
 	}, {
 		name: "store",
 		description: "location where to save data - defaults to current directory",
@@ -61,16 +67,52 @@ export default class Start extends Command {
 
 	async run() {
 		const {args, flags} = this.parse(Start)
+		let type: DB_Types, port = flags.port, data = flags.data
+
+		if (args.database) {
+			type = args.database
+		} else {
+			// time to walk through with the user
+			const responses: any = await inquirer.prompt([
+				{
+					name: 'type',
+					message: 'select a db type',
+					type: 'list',
+					choices: Object.keys(DB_Types).map(type => { return { name: type } }),
+				}, 
+				{
+					name: 'port',
+					message: (answers: any) => {
+						return `what port should the DB be exposed on? (defaults to ${presetFor(DB_Types[answers.type as DB_Types]).port})`
+					},
+					default: (answers: any) => {
+						return presetFor(DB_Types[answers.type as DB_Types]).port
+					},
+					type: 'number'
+					
+				},
+				{
+					name: 'data',
+					message: "where do you want to store the data for this db? (defaults to ./.qudb/data)",
+					default: flags.data || "./.qudb/data",
+					type: 'input'
+				}
+			])
+			type = responses.type
+			port = responses.port
+			data = responses.data
+		}
 
 		console.log(`creating database "${flags.name}"`)
-		const db = new Database({
-			name: flags.name,
-			type: args.database,
-			username: flags.username,
-			password: flags.password,
-			save: true,
-			store: args.store,
-		}, flags.port)
-		await db.save(flags.force)
+			const db = new Database({
+				name: flags.name,
+				type: type,
+				username: flags.username,
+				password: flags.password,
+				save: true,
+				store: args.store,
+				data: data
+			}, port)
+			await db.save(flags.force)
 	}
 }

@@ -1,10 +1,11 @@
 import {Command, flags} from "@oclif/command"
-import {generateString} from "../../utils"
 import {Database} from "../../core/database"
 
-export default class Start extends Command {
+export default class Status extends Command {
 	static description = "gets status of the database based on the current directory (or path otherwise specified). otherwise, it displays all docker statuses"
 
+	static aliases = ["status"]
+	
 	static examples = [
 		"$ qdb ps",
 		"$ qdb ps path/to/config",
@@ -25,7 +26,7 @@ export default class Start extends Command {
 	}]
 
 	async run() {
-		const {args, flags} = this.parse(Start)
+		const {args} = this.parse(Status)
 
 		let dbName: string = args.name
 

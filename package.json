@@ -1,6 +1,6 @@
 {
   "name": "qudb",
-  "description": "quickly start and manage databases",
+  "description": "              ____\r\n   ____ _____/ / /_\r\n  / __ `/ __  / __ \\\r\n / /_/ / /_/ / /_/ /\r\n \\__, /\\__,_/_.___/\r\n   /_/\n\nquickly start and manage databases",
   "version": "0.4.0",
   "author": "Ronak Shah @trulyronak",
   "bin": {
@@ -11,9 +11,11 @@
     "@oclif/command": "^1.7.0",
     "@oclif/config": "^1.16.0",
     "@oclif/plugin-help": "^3.1.0",
+    "@types/inquirer": "^7.3.0",
     "cli-ux": "^5.4.9",
     "execa": "^4.0.2",
     "fs-extra": "^9.0.0",
+    "inquirer": "^7.3.3",
     "js-yaml": "^3.14.0",
     "path": "^0.12.7",
     "tslib": "^1.13.0"

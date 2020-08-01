@@ -17,7 +17,7 @@ export default class Start extends Command {
 		}),
 		port: flags.integer({
 			char: "p",
-			description: "port to expose the database on (identifies where the db is listening and maps it to the desired local port",
+			description: "port to expose the database on (identifies where the db is listening and maps it to the desired local port. defaults to exposing the db on its standard output port",
 		}),
 		network: flags.string({
 			description: "docker network to connect db to",
@@ -40,13 +40,11 @@ export default class Start extends Command {
 			description: "environment variables to pass into the db",
 		}),
 		username: flags.string({
-			char: "u",
 			description: "root username for db - defaults to root",
 			default: "root",
 			dependsOn: ["password"],
 		}),
 		password: flags.string({
-			char: "p",
 			description: "root password for db - defaults to password",
 			default: "password",
 			dependsOn: ["username"],
@@ -60,12 +58,18 @@ export default class Start extends Command {
 			description: "override any existing configuration file",
 			default: false,
 		}),
+		data: flags.string({
+			char: "v",
+			description: "where to store the data in this database — defaults to ./.qudb/data",
+			default: "./.qudb/data"
+		})
 	}
 
 	static args = [{
 		name: "database",
 		required: false,
-		description: "type of database to start (postgres | mysql | etc)",
+		description: "type of database to start (postgres | mysql | redis). If you'd like more, support can be added easily (file an issue!)",
+		options: ["postgres", "mysql", "redis"]
 	}]
 
 	async run() {
@@ -81,6 +85,7 @@ export default class Start extends Command {
 				password: flags.password,
 				save: flags.save,
 				store: flags.store,
+				data: flags.data
 			}, flags.port)
 			if (flags.save) {
 				db.save(flags.force)
