@@ -24,4 +24,4 @@ EXAMPLE
   $ qdb stop fluffy-flamingo
 ```
 
-_See code: [src/commands/stop/index.ts](https://github.com/trulyronak/qudb/blob/v1.0.0/src/commands/stop/index.ts)_
+_See code: [src/commands/stop/index.ts](https://github.com/trulyronak/qudb/blob/v1.1.0/src/commands/stop/index.ts)_
