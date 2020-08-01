@@ -31,7 +31,7 @@ OPTIONS
 
   -v, --data=data      [default: ./.qudb/data] where to store the data in this database — defaults to ./.qudb/data
 
-  --name=name          [default: T0rG9HhebU] the name to give this database - autogenerates one for you otherwise
+  --name=name          [default: rHn1kXrNMp] the name to give this database - autogenerates one for you otherwise
 
   --network=network    docker network to connect db to
 
@@ -43,4 +43,4 @@ EXAMPLE
   $ qdb save postgres <optional_path_to_directory_to_save_config>
 ```
 
-_See code: [src/commands/init/index.ts](https://github.com/trulyronak/qudb/blob/v1.1.0/src/commands/init/index.ts)_
+_See code: [src/commands/init/index.ts](https://github.com/trulyronak/qudb/blob/v1.2.0/src/commands/init/index.ts)_

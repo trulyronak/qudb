@@ -24,4 +24,4 @@ EXAMPLES
   $ qdb nuke path/to/config
 ```
 
-_See code: [src/commands/nuke/index.ts](https://github.com/trulyronak/qudb/blob/v1.1.0/src/commands/nuke/index.ts)_
+_See code: [src/commands/nuke/index.ts](https://github.com/trulyronak/qudb/blob/v1.2.0/src/commands/nuke/index.ts)_
