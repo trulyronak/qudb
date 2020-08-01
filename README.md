@@ -6,6 +6,7 @@ quickly start and manage databases
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/qudb.svg)](https://npmjs.org/package/qudb)
 [![Downloads/week](https://img.shields.io/npm/dw/qudb.svg)](https://npmjs.org/package/qudb)
+[![Downloads/month](https://img.shields.io/npm/dm/qudb.svg)](https://npmjs.org/package/qudb)
 [![License](https://img.shields.io/npm/l/qudb.svg)](https://github.com/trulyronak/qudb/blob/master/package.json)
 
 ### individual command reference
