@@ -16,6 +16,16 @@ quickly start and manage databases
 3. [status / ps](docs/ps.md)
 4. [help](docs/help.md)
 
+### installation
+
+QUDB can be installed by `npm`, or if you don't want to install it, it can be used with `npx`.
+
+		npm install -g qudb
+		qdb --help
+		
+		# no install
+		npx qudb --help # replace qdb with npx qudb
+
 ### usage
 
 ```
