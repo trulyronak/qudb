@@ -1,7 +1,7 @@
 {
   "name": "qudb",
   "description": "              ____\r\n   ____ _____/ / /_\r\n  / __ `/ __  / __ \\\r\n / /_/ / /_/ / /_/ /\r\n \\__, /\\__,_/_.___/\r\n   /_/\n\nquickly start and manage databases",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Ronak Shah @trulyronak",
   "bin": {
     "qdb": "./bin/run"
