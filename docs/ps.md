@@ -28,4 +28,4 @@ EXAMPLES
   $ qdb ps path/to/config
 ```
 
-_See code: [src/commands/ps/index.ts](https://github.com/trulyronak/qudb/blob/v1.2.0/src/commands/ps/index.ts)_
+_See code: [src/commands/ps/index.ts](https://github.com/trulyronak/qudb/blob/v1.3.0/src/commands/ps/index.ts)_

@@ -33,7 +33,7 @@ OPTIONS
 
   --load=load          [default: .] directory where your qudb.yaml file is located
 
-  --name=name          [default: oMblgFtszD] the name to give this database - autogenerates one for you otherwise
+  --name=name          [default: WOKpK42Tme] the name to give this database - autogenerates one for you otherwise
 
   --network=network    docker network to connect db to
 
@@ -47,4 +47,4 @@ EXAMPLE
   $ qdb start postgres
 ```
 
-_See code: [src/commands/start/index.ts](https://github.com/trulyronak/qudb/blob/v1.2.0/src/commands/start/index.ts)_
+_See code: [src/commands/start/index.ts](https://github.com/trulyronak/qudb/blob/v1.3.0/src/commands/start/index.ts)_
