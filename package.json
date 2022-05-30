@@ -14,7 +14,7 @@
     "@types/inquirer": "^7.3.0",
     "cli-ux": "^5.4.9",
     "execa": "^4.0.2",
-    "fs-extra": "^9.0.0",
+    "fs-extra": "^10.0.0",
     "inquirer": "^7.3.3",
     "js-yaml": "^3.14.0",
     "path": "^0.12.7",
